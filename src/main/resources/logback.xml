@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 
+    <appender name="FILE" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <key>logName</key>
+            <defaultValue>test</defaultValue>
+        </discriminator>
+        <sift>
+            <appender name="FILE-test" class="ch.qos.logback.core.FileAppender">
+                <file>D:/tmp/test1.log</file>
+                <append>true</append>
+                <layout class="ch.qos.logback.classic.PatternLayout">
+                    <pattern>%d [%thread] %level %mdc %logger{35} - %msg%n</pattern>
+                </layout>
+            </appender>
+        </sift>
+    </appender>
+    -->
+    
+    <property name="LOG_FILE" value="LogFile-TaskService" />
+	<property name="LOG_DIR" value="D:/tmp" />
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <file>${LOG_DIR}/${LOG_FILE}.log</file> 
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>${LOG_DIR}/%d{yyyy/MM}/${LOG_FILE}.gz</fileNamePattern>
+	        <totalSizeCap>3MB</totalSizeCap>
+	    </rollingPolicy>
+	    <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d [%thread] %level %mdc %logger{35} - %msg%n</pattern>
+        </layout>
+    </appender>
+    
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <logger name="com.sangam.taskservice.service" level="debug" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+         <appender-ref ref="FILE"/>
+    </logger>
+
+    <root level="error">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
