@@ -1,8 +1,5 @@
 	package com.sangam.taskservice.utils;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieBuilder;
 import org.kie.api.builder.KieFileSystem;
@@ -30,12 +27,11 @@ public class MyConfiguration {
 	 	@Bean
 	    public KieContainer getKieContainer(){
 
-	 		System.out.println("Loading bean kie ");
 	    	KieServices kieServices=KieServices.Factory.get();
 	        getKieRepository();
 	        KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
 
-	        Resource dt = ResourceFactory.newClassPathResource("com/sangam/taskservice/TaskRules1.xls",getClass());
+	        Resource dt = ResourceFactory.newClassPathResource("com/sangam/taskservice/TaskRules.xls",getClass());
 	        kieFileSystem.write(dt);
 	        
 	        KieBuilder kb = kieServices.newKieBuilder(kieFileSystem);

@@ -24,7 +24,6 @@ public class TaskController {
 	@Autowired
 	TaskService taskService;
 	
-	
 	// URL : http://localhost:8083/task/taskDetails?taskId=task_id&status=status_id&fetch=flag_id
 	// @RequestMapping(value = Constants.REQUEST_MAPPING_TASK_DETAILS, params = {Constants.REQUEST_PARAMS_TASK_ID,Constants.REQUEST_PARAMS_STATUS,Constants.REQUEST_PARAMS_FLAG}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@RequestMapping(value = Constants.REQUEST_MAPPING_TASK_DETAILS, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -49,6 +48,4 @@ public class TaskController {
 	public Set<TaskDTO> fetchFilterTask(@RequestBody FilterTaskDTO filterTask) throws Exception{
 		return taskService.fetchFilterTask(filterTask) ;
 	}
-	
-	
 }

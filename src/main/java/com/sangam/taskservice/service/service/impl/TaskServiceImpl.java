@@ -49,8 +49,11 @@ public class TaskServiceImpl implements TaskService {
 																Constants.getInteger(flag));
 
 		if(tempListTask.isEmpty())
-			throw new NoTaskExistsException("Requested task does not exist");
-		
+			if(flag.equalsIgnoreCase("4")) // Get task by task id
+				throw new NoTaskExistsException("Requested task does not exist");
+			else
+				return new HashSet<TaskDTO>();
+
 		Set<TaskDTO> tempSetTask = new HashSet<TaskDTO>();
 		Set<TaskDTO> setTask = new TreeSet<TaskDTO>(new TaskComparator());
 		

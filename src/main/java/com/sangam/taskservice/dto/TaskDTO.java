@@ -12,12 +12,10 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import org.kie.api.runtime.KieSession;
 import org.springframework.data.util.Pair;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sangam.taskservice.comparator.LogComparator;
-import com.sangam.taskservice.config.DroolsBeanFactory;
 import com.sangam.taskservice.utils.Constants;
 
 import lombok.Data;
