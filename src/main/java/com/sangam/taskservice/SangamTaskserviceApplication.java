@@ -18,7 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableAspectJAutoProxy
 @EnableSwagger2
 public class SangamTaskserviceApplication implements CommandLineRunner {
-	
+	//t
 	@Autowired
     private MyConfiguration myConfig;
 
